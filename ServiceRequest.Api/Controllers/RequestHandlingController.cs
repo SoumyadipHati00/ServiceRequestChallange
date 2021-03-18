@@ -4,6 +4,7 @@ using ServiceRequest.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -22,34 +23,91 @@ namespace ServiceRequest.Api.Controllers
 
         // GET: api/<RequestHandlingController>
         [HttpGet]
-        public  IActionResult Get()
+        public IActionResult Get()
         {
-            return Ok(_logic.GetData());
+            var data = _logic.GetData();
+            if (data != null && data.Count > 0)
+            {
+                return Ok(data);
+            }
+            else
+            {
+                return new EmptyResult();
+            }
         }
 
-        // GET api/<RequestHandlingController>/5
+        // GET api/<RequestHandlingController>/bf185331-3829-4e92-b03d-cdb6e78a156f
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(Guid id)
         {
-            return "value";
+            var data = _logic.GetData(id);
+            if (data != null)
+            {
+                return Ok(data);
+            }
+            else
+            {
+                return NotFound();
+            }
         }
 
         // POST api/<RequestHandlingController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post([FromBody] List<ServiceRequestDetails> requestList)
         {
+
+            if (_logic.InsertData(requestList))
+            {
+                return Created(new Uri($"{Request.Host}/api/servicerequest"), true);
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
-        // PUT api/<RequestHandlingController>/5
+        // PUT api/<RequestHandlingController>/bf185331-3829-4e92-b03d-cdb6e78a156f
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put(Guid id, [FromBody] ServiceRequestDetails request)
         {
+            var data = _logic.GetData(id);
+            if (data != null)
+            {
+                if (_logic.UpdateData(request))
+                {
+                    return Ok(true);
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            else
+            {
+                return NotFound();
+            }
         }
 
-        // DELETE api/<RequestHandlingController>/5
+        // DELETE api/<RequestHandlingController>/bf185331-3829-4e92-b03d-cdb6e78a156f
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(Guid id)
         {
+            var data = _logic.GetData(id);
+            if (data != null)
+            {
+                if (_logic.DeleteData(id))
+                {
+                    return Ok();
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            else
+            {
+                return NotFound();
+            }
         }
     }
 }

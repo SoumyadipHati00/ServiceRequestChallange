@@ -15,6 +15,7 @@ using ServiceRequest.Data.Contracts;
 using ServiceRequest.Data.Implementation;
 using ServiceRequest.Logic.Contracts;
 using ServiceRequest.Logic.Implementation;
+using System.Text.Json;
 
 namespace ServiceRequest.Api
 {
@@ -34,7 +35,7 @@ namespace ServiceRequest.Api
             services.AddTransient<IServiceRequestData, ServiceRequestData>();
             services.AddTransient<IServiceRequestLogic, ServiceRequestLogic>();
 
-            services.AddControllers();
+            services.AddControllers().AddJsonOptions(option => option.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase);
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ServiceRequest.Api", Version = "v1" });

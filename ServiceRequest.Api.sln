@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceRequest.Data", "Serv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceRequest.Logic", "ServiceRequest.Logic\ServiceRequest.Logic.csproj", "{2286B406-FF6C-4397-9A2B-8A34752016CE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceRequest.Test", "ServiceRequest.Test\ServiceRequest.Test.csproj", "{03B0D82B-837C-48BA-B5FE-2B34D0721C63}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{2286B406-FF6C-4397-9A2B-8A34752016CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2286B406-FF6C-4397-9A2B-8A34752016CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2286B406-FF6C-4397-9A2B-8A34752016CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03B0D82B-837C-48BA-B5FE-2B34D0721C63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03B0D82B-837C-48BA-B5FE-2B34D0721C63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03B0D82B-837C-48BA-B5FE-2B34D0721C63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03B0D82B-837C-48BA-B5FE-2B34D0721C63}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

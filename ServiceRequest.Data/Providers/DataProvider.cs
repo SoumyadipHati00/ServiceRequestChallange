@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json;
 using System.IO;
+using System.Linq;
+using System.Text.Json;
 
 namespace ServiceRequest.Data.Providers
 {
@@ -18,7 +20,9 @@ namespace ServiceRequest.Data.Providers
 
         public bool DeleteData(Guid requestId)
         {
-            throw new NotImplementedException();
+           var deleteCount = _data.RemoveAll(data => data.Id == requestId);
+            SaveData();
+            return deleteCount > 0;
         }
 
         public List<ServiceRequestDetails> GetData()
@@ -28,23 +32,56 @@ namespace ServiceRequest.Data.Providers
 
         public ServiceRequestDetails GetData(Guid requestId)
         {
-            throw new NotImplementedException();
+            return _data.FirstOrDefault(req => req.Id == requestId);
         }
 
         public bool InsertData(List<ServiceRequestDetails> requestList)
         {
-            throw new NotImplementedException();
-        }
+            bool isSuccess = false;
+            if(requestList != null && requestList.Count > 0)
+            {
+                requestList.ForEach(request =>
+                {
+                    request.CreatedDate = DateTime.Now;
+                    _data.Add(request);
+                });
+                SaveData();
+                isSuccess = true;
+            }
+            return isSuccess;
+        }        
 
-        public bool UpdateData(List<ServiceRequestDetails> requestList)
+        public bool UpdateData(ServiceRequestDetails request)
         {
-            throw new NotImplementedException();
+            bool isSucess = false;
+            var dataFromDb = _data.FirstOrDefault(dt => dt.Id == request.Id);
+            if(dataFromDb != null)
+            {
+                dataFromDb.Description = request.Description;
+                dataFromDb.CurrentStatus = request.CurrentStatus;
+                dataFromDb.BuildingCode = request.BuildingCode;
+                dataFromDb.LastModifiedBy = request.LastModifiedBy;
+                dataFromDb.LastModifiedDate = DateTime.Now;
+                SaveData();
+                isSucess = true;
+            }
+            return isSucess;
         }
 
         private List<ServiceRequestDetails> CollectDataFromFile()
         {
            var data = JsonConvert.DeserializeObject< List<ServiceRequestDetails>>(File.ReadAllText(@"E:\SH\Practice\ServiceRequest.Api\ServiceRequest.Data\DB\data.json"));
             return data;
+        }
+
+        private void SaveData()
+        {
+            var serializeOptions = new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            };
+            string json = System.Text.Json.JsonSerializer.Serialize(_data, serializeOptions);
+            File.WriteAllText(@"E:\SH\Practice\ServiceRequest.Api\ServiceRequest.Data\DB\data.json", json);
         }
     }
 }

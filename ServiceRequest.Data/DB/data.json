@@ -1,32 +1,42 @@
- [
-    {
-      "id": "727b376b-79ae-498e-9cff-a9f51b848ea4",
-      "buildingCode": "COH",
-      "description": "Please turn up the AC in suite 1200D. It is too hot here",
-      "currentStatus": "Created",
-      "createdBy": "Nik Patel",
-      "createdDate": "2019-08-01T14:25:43.511Z",
-      "lastModifiedBy": "Jane Doe",
-      "lastModifiedDate": "2019-08-01T15:01:23.511Z"
-    },
-    {
-      "id": "727b376b-79ae-498e-9cff-a9f51b848ea4",
-      "buildingCode": "SFO",
-      "description": "Please turn up the AC in suite 1001F. It is too hot here",
-      "currentStatus": "Created",
-      "createdBy": "Nik Patel",
-      "createdDate": "2019-08-01T14:25:43.511Z",
-      "lastModifiedBy": "Jane Doe",
-      "lastModifiedDate": "2019-08-01T15:01:23.511Z"
-    },
-    {
-      "id": "727b376b-79ae-498e-9cff-a9f51b848ea4",
-      "buildingCode": "COH",
-      "description": "Please turn up the AC in suite 1205D. It is too hot here",
-      "currentStatus": "Created",
-      "createdBy": "Nik Patel",
-      "createdDate": "2019-08-01T14:25:43.511Z",
-      "lastModifiedBy": "Jane Doe",
-      "lastModifiedDate": "2019-08-01T15:01:23.511Z"
-    }
-  ]
+[
+  {
+    "id": "73e23b3a-abb7-4e6f-b5ea-3028de8723fe",
+    "buildingCode": "COH",
+    "description": "Please turn up the AC in suite 1200D. It is too hot here",
+    "currentStatus": 1,
+    "createdBy": "Nik Patel",
+    "createdDate": "2019-08-01T14:25:43.511Z",
+    "lastModifiedBy": "Jane Doe",
+    "lastModifiedDate": "2019-08-01T15:01:23.511Z"
+  },
+  {
+    "id": "f317bc33-6f02-438a-aa72-8d9fc8d69e1d",
+    "buildingCode": "SFO",
+    "description": "Please turn up the AC in suite 1001F. It is too hot here",
+    "currentStatus": 1,
+    "createdBy": "Nik Patel",
+    "createdDate": "2019-08-01T14:25:43.511Z",
+    "lastModifiedBy": "Jane Doe",
+    "lastModifiedDate": "2019-08-01T15:01:23.511Z"
+  },
+  {
+    "id": "bf185331-3829-4e92-b03d-cdb6e78a156f",
+    "buildingCode": "COH",
+    "description": "Please turn up the AC in suite 1205D. It is too hot here",
+    "currentStatus": 1,
+    "createdBy": "Nik Patel",
+    "createdDate": "2019-08-01T14:25:43.511Z",
+    "lastModifiedBy": "Jane Doe",
+    "lastModifiedDate": "2019-08-01T15:01:23.511Z"
+  },
+  {
+    "id": "c2f94941-f7df-47ea-810a-15a8e5144cfc",
+    "buildingCode": "NYC",
+    "description": "Please turn up the AC in suite 1000C. It is too hot here",
+    "currentStatus": 1,
+    "createdBy": "Nik Patel",
+    "createdDate": "2021-03-18T18:23:29.0539798+05:30",
+    "lastModifiedBy": "Jane Doe",
+    "lastModifiedDate": "2021-03-18T18:25:56.5048789+05:30"
+  }
+]

@@ -17,7 +17,7 @@ namespace ServiceRequest.Logic.Implementation
 
         public bool DeleteData(Guid requestId)
         {
-            throw new NotImplementedException();
+            return _dataContext.DeleteData(requestId);
         }
 
         public List<ServiceRequestDetails> GetData()
@@ -27,17 +27,17 @@ namespace ServiceRequest.Logic.Implementation
 
         public ServiceRequestDetails GetData(Guid requestId)
         {
-            throw new NotImplementedException();
+            return _dataContext.GetData(requestId);
         }
 
         public bool InsertData(List<ServiceRequestDetails> requestList)
         {
-            throw new NotImplementedException();
+            return _dataContext.InsertData(requestList);
         }
 
-        public bool UpdateData(List<ServiceRequestDetails> requestList)
+        public bool UpdateData(ServiceRequestDetails request)
         {
-            throw new NotImplementedException();
+            return _dataContext.UpdateData(request);
         }
     }
 }

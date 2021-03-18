@@ -36,7 +36,7 @@ namespace ServiceRequest.Data.Providers
             throw new NotImplementedException();
         }
 
-        public bool UpdateData(List<ServiceRequestDetails> requestList)
+        public bool UpdateData(ServiceRequestDetails request)
         {
             throw new NotImplementedException();
         }
