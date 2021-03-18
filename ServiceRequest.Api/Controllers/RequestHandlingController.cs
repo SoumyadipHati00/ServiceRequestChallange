@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ServiceRequest.Logic.Contracts;
+using ServiceRequest.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +14,17 @@ namespace ServiceRequest.Api.Controllers
     [ApiController]
     public class RequestHandlingController : ControllerBase
     {
+        IServiceRequestLogic _logic;
+        public RequestHandlingController(IServiceRequestLogic logic)
+        {
+            _logic = logic;
+        }
+
         // GET: api/<RequestHandlingController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public  IActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            return Ok(_logic.GetData());
         }
 
         // GET api/<RequestHandlingController>/5

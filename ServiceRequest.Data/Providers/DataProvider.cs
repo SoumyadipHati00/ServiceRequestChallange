@@ -1,20 +1,20 @@
-﻿using ServiceRequest.Data.Contracts;
-using ServiceRequest.Data.Providers;
-using ServiceRequest.Models;
+﻿using ServiceRequest.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Newtonsoft.Json;
+using System.IO;
 
-namespace ServiceRequest.Data.Implementation
+namespace ServiceRequest.Data.Providers
 {
-    public class ServiceRequestData : IServiceRequestData
+    public class DataProvider : IDataProvider
     {
-        IDataProvider _provider;
+        List<ServiceRequestDetails> _data = null;
 
-        public ServiceRequestData(IDataProvider provider)
+        public DataProvider()
         {
-            _provider = provider;
-        }
+            _data = CollectDataFromFile();
+        }        
 
         public bool DeleteData(Guid requestId)
         {
@@ -23,7 +23,7 @@ namespace ServiceRequest.Data.Implementation
 
         public List<ServiceRequestDetails> GetData()
         {
-            return _provider.GetData();
+            return _data;
         }
 
         public ServiceRequestDetails GetData(Guid requestId)
@@ -39,6 +39,12 @@ namespace ServiceRequest.Data.Implementation
         public bool UpdateData(List<ServiceRequestDetails> requestList)
         {
             throw new NotImplementedException();
+        }
+
+        private List<ServiceRequestDetails> CollectDataFromFile()
+        {
+           var data = JsonConvert.DeserializeObject< List<ServiceRequestDetails>>(File.ReadAllText(@"E:\SH\Practice\ServiceRequest.Api\ServiceRequest.Data\DB\data.json"));
+            return data;
         }
     }
 }

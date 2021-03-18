@@ -1,6 +1,6 @@
 ﻿namespace ServiceRequest.Models
 {
-    public enum CurrentStatus
+    public enum CurrentStatusEnum
     {
         NotApplicable,
         Created,

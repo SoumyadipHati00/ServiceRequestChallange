@@ -10,6 +10,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ServiceRequest.Data.Providers;
+using ServiceRequest.Data.Contracts;
+using ServiceRequest.Data.Implementation;
+using ServiceRequest.Logic.Contracts;
+using ServiceRequest.Logic.Implementation;
 
 namespace ServiceRequest.Api
 {
@@ -25,6 +30,9 @@ namespace ServiceRequest.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IDataProvider, DataProvider>();
+            services.AddTransient<IServiceRequestData, ServiceRequestData>();
+            services.AddTransient<IServiceRequestLogic, ServiceRequestLogic>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

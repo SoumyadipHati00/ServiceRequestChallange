@@ -1,10 +1,15 @@
-﻿using System;
+﻿using ServiceRequest.Models;
+using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ServiceRequest.Data.Contracts
 {
-    interface IServiceRequestData
+    public interface IServiceRequestData
     {
+        public List<ServiceRequestDetails> GetData();
+        public ServiceRequestDetails GetData(Guid requestId);
+        public bool InsertData(List<ServiceRequestDetails> requestList);
+        public bool UpdateData(List<ServiceRequestDetails> requestList);
+        public bool DeleteData(Guid requestId);
     }
 }

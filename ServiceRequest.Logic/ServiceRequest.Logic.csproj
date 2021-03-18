@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ServiceRequest.Data\ServiceRequest.Data.csproj" />
+    <ProjectReference Include="..\ServiceRequest.Models\ServiceRequest.Models.csproj" />
+  </ItemGroup>
+
 </Project>
